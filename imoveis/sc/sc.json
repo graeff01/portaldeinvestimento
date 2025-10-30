@@ -1,0 +1,31 @@
+[
+  {
+    "id": "715556",
+    "titulo": "Apartamento à venda de 2 quartos no Perequê - Porto Belo!",
+    "quartos": 2,
+    "quartos_complemento": "com suíte",
+    "banheiros": 2,
+    "banheiros_complemento": "com box de vidro",
+    "vagas": 2,
+    "vagas_complemento": "cobertas",
+    "metragem": 73,
+    "metragem_complemento": "Área útil",
+    "sol": "Sol da manhã",
+    "sol_complemento": "na sala e varanda",
+    "preco_complemento": "à vista",
+    "imagem": "images/sc/715556/1.jpg",
+    "imagens": [
+      "images/sc/715556/2.jpg",
+      "images/sc/715556/3.jpg",
+      "images/sc/715556/4.jpg",
+      "images/sc/715556/5.jpg"
+    ],
+    "descricao": "Descubra o seu novo lar no encantador Balneário Perequê, em Porto Belo. Este apartamento de 73 m² na Torre Atlântico apresenta um hall de entrada mobiliado, sacada e janelas grandes que garantem ótima iluminação. O imóvel ainda possui área de serviço e churrasqueira na sacada, perfeito para momentos de descontração. Desfrute da infraestrutura completa do condomínio, que inclui piscina e salão de festas. Além disso, o apartamento oferece duas vagas na garagem e está idealmente localizado perto das belezas naturais da região. Venha conhecer e se encantar!",
+    "link": "imovel.html?id=715556",
+    "mensagem_whats": "Oi! Vi esse imóvel no Portal de Investimento e achei interessante. Pode me passar mais detalhes? Código: [715556]",
+    "regiao": "santa catarina",
+    "tipo": "Apartamento",
+    "preco": 985000,
+    "whatsapp": "5548988189757"
+  }
+]

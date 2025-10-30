@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Imóveis únicos em Florianópolis selecionados pela equipe local.">
+  <title>Imóveis em Santa Catarina - Portal de Investimento</title>
+  <link rel="stylesheet" href="css/portobelo.css" />
+  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11359273530"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-11359273530');
+</script>
+
+
+
+</head>
+<body>
+
+  <!-- Hotjar Tracking Code -->
+  <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:6444529,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+
+
+
+<!-- ==================== BARRA FIXA E MENU LATERAL ==================== -->
+<nav class="barra-topo" id="barraTopo">
+  <div class="barra-conteudo">
+    <div class="logo-container">
+      <div class="logo-titulo">Portal de Investimento</div>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<nav class="menu-lateral" id="menuLateral">
+  <a href="index.html" class="menu-item">🏠 Início</a>
+
+  <div class="menu-item menu-item-com-submenu" data-submenu="agencias">
+    🏢 Nossas Agências
+  </div>
+  <div class="submenu" id="submenu-agencias">
+    <a href="canoas.html" class="submenu-item">Canoas</a>
+    <a href="moinhos.html" class="submenu-item">Porto Alegre</a>
+    <a href="portobelo.html" class="submenu-item">Porto Belo</a>
+    <a href="santamonica.html" class="submenu-item">Santa Mônica</a>
+  </div>
+
+  <a href="investimento.html" class="menu-item">💰 Investimento</a>
+  <a href="/pages/leiloes" class="menu-item">🏗️ Leilão</a>
+
+  <div class="menu-contato">
+    <h3>Atendimento Exclusivo</h3>
+    <a href="https://wa.me/5551993303583?text=Olá,%20vim%20pelo%20Portal%20de%20Investimento!" 
+       class="btn-contato" target="_blank">Falar Agora</a>
+  </div>
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const menuLateral = document.getElementById('menuLateral');
+  const submenus = document.querySelectorAll('.menu-item-com-submenu');
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('ativo');
+    menuLateral.classList.toggle('ativo');
+  });
+
+  submenus.forEach(item => {
+    item.addEventListener('click', () => {
+      const submenuId = item.getAttribute('data-submenu');
+      const submenu = document.getElementById('submenu-' + submenuId);
+      submenu.classList.toggle('aberto');
+      item.classList.toggle('aberto');
+    });
+  });
+
+  // Fecha o menu ao clicar fora
+  document.addEventListener('click', e => {
+    if (!menuLateral.contains(e.target) && !menuToggle.contains(e.target)) {
+      menuLateral.classList.remove('ativo');
+      menuToggle.classList.remove('ativo');
+      submenus.forEach(item => {
+        item.classList.remove('aberto');
+        const submenu = document.getElementById('submenu-' + item.getAttribute('data-submenu'));
+        submenu.classList.remove('aberto');
+      });
+    }
+  });
+</script>
+
+<!-- HERO -->
+<header class="hero hero-sc"></header>
+
+<!-- SOBRE A UNIDADE -->
+<section class="container sobre-canoas" style="background-color: #f8f8f8; padding: 60px 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: center; margin-top: 40px;">
+  <p class="section-description" style="max-width: 700px; margin-top: -80px; font-size: 1.1rem; color: #444;">
+    Nossa unidade em Porto Belo, Santa Catarina, conecta você aos melhores imóveis da região, com atendimento ágil, personalizado e focado no seu objetivo de morar bem ou investir com segurança.
+  </p>
+  <div class="cta-botao-centro">
+    <a href="https://wa.me/5551982628664?text=Olá%2C+vim+pelo+Portal+de+Investimento+e+gostaria+de+um+atendimento+personalizado!" class="cta-destaque">Ver Imóveis em Porto Belo</a>
+  </div>
+</section>
+
+<!-- IMÓVEIS -->
+<section class="container" id="imoveis">
+  <div class="section-separator"></div>
+  <h2 class="section-title">Imóveis em Porto Belo</h2>
+  <p class="section-description">Selecionamos imóveis com localização estratégica, vista deslumbrante e excelente padrão de construção.</p>
+  <div class="imoveis-carrossel" id="listaImoveis"></div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="container" style="max-width: 700px; margin: 60px auto; background: #f9f9f9; padding: 40px 30px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+  <h2 class="section-title" style="text-align: center; margin-bottom: 25px; margin-top: -50px; color: #00854a; font-size: 1.8rem;">Fale com nossa equipe</h2>
+  <form onsubmit="return enviarFormulario()" style="display: grid; gap: 20px;">
+    <input type="text" placeholder="Nome completo" required />
+    <input type="tel" placeholder="Telefone com DDD" required />
+    <input type="email" placeholder="Seu melhor e-mail" required />
+    <textarea rows="5" placeholder="Como podemos te ajudar?" required></textarea>
+    <button type="submit">Quero mais informações</button>
+  </form>
+  <p id="mensagemForm" class="msg-sucesso" style="text-align: center;"></p>
+</section>
+
+<!-- RODAPÉ -->
+<footer>
+  <p>Portal de Investimento - Porto Belo © 2025</p>
+  <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+</footer>
+
+<!-- SCRIPT PARA IMÓVEIS -->
+<script>
+  fetch('imoveis/sc/portobelo.json')
+    .then(res => res.json())
+    .then(imoveis => {
+      const lista = document.getElementById('listaImoveis');
+      imoveis.forEach(imovel => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <a href="imovel.html?id=${imovel.id}" onclick='salvarImovel(event, ${JSON.stringify(imovel)})'>
+            <img src="${imovel.imagem}" alt="${imovel.titulo}" />
+          </a>
+          <div class="card-body">
+            <h3 class="card-titulo">${imovel.titulo}</h3>
+            <div class="icones-imovel">
+              <div>📏 ${imovel.metragem}m²</div>
+              <div>🛏 ${imovel.quartos} dorm.</div>
+              <div>🚿 ${imovel.banheiros} banh.</div>
+              <div>🚗 ${imovel.vagas} vaga</div>
+            </div>
+            <p class="preco">💰 R$ ${Number(imovel.preco).toLocaleString('pt-BR')}</p>
+            <a href="imovel.html?id=${imovel.id}" onclick='salvarImovel(event, ${JSON.stringify(imovel)})' class="botao-card">Ver detalhes</a>
+          </div>
+        `;
+        lista.appendChild(card);
+      });
+    });
+
+  function salvarImovel(event, imovel) {
+    event.stopPropagation();
+    localStorage.setItem('imovelSelecionado', JSON.stringify(imovel));
+  }
+</script>
+
+<!-- ANIMAÇÃO -->
+<style>
+@keyframes pulseGreen {
+  0% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7); }
+  70% { box-shadow: 0 0 0 12px rgba(0, 200, 83, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
+}
+</style>
+</body>
+</html>

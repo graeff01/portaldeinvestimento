@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalhes do Imóvel</title>
+  <link rel="stylesheet" href="css/exibir.css" />
+  <link rel="stylesheet" href="css/imovel-page.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
+
+  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11359273530"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-11359273530');
+</script>
+
+
+
+
+  <style>
+    .card {
+      width: 280px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-body h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: #00854a;
+    }
+
+    .card-body p {
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    .card-body a {
+      display: inline-block;
+      background: #f7941d;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .slick-slide {
+      display: flex;
+      justify-content: center;
+    }
+
+    .icones-imovel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .icones-imovel div {
+      background: #f2f2f2;
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-destaque {
+  background: #e9e9e9b2;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  margin: 0 auto 24px auto;
+}
+
+
+  </style>
+</head>
+<body>
+
+<!-- ==================== BARRA FIXA E MENU LATERAL ==================== -->
+<nav class="barra-topo" id="barraTopo">
+  <div class="barra-conteudo">
+    <div class="logo-container">
+      <div class="logo-titulo">Portal de Investimento</div>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<nav class="menu-lateral" id="menuLateral">
+  <a href="index.html" class="menu-item">🏠 Início</a>
+
+  <div class="menu-item menu-item-com-submenu" data-submenu="agencias">
+    🏢 Nossas Agências
+  </div>
+  <div class="submenu" id="submenu-agencias">
+    <a href="canoas.html" class="submenu-item">Canoas</a>
+    <a href="moinhos.html" class="submenu-item">Porto Alegre</a>
+    <a href="portobelo.html" class="submenu-item">Porto Belo</a>
+    <a href="santamonica.html" class="submenu-item">Santa Mônica</a>
+  </div>
+
+  <a href="investimento.html" class="menu-item">💰 Investimento</a>
+  <a href="/pages/leiloes" class="menu-item">🏗️ Leilão</a>
+
+  <div class="menu-contato">
+    <h3>Atendimento Exclusivo</h3>
+    <a href="https://wa.me/5551993303583?text=Olá,%20vim%20pelo%20Portal%20de%20Investimento!" 
+       class="btn-contato" target="_blank">Falar Agora</a>
+  </div>
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const menuLateral = document.getElementById('menuLateral');
+  const submenus = document.querySelectorAll('.menu-item-com-submenu');
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('ativo');
+    menuLateral.classList.toggle('ativo');
+  });
+
+  submenus.forEach(item => {
+    item.addEventListener('click', () => {
+      const submenuId = item.getAttribute('data-submenu');
+      const submenu = document.getElementById('submenu-' + submenuId);
+      submenu.classList.toggle('aberto');
+      item.classList.toggle('aberto');
+    });
+  });
+
+  // Fecha o menu ao clicar fora
+  document.addEventListener('click', e => {
+    if (!menuLateral.contains(e.target) && !menuToggle.contains(e.target)) {
+      menuLateral.classList.remove('ativo');
+      menuToggle.classList.remove('ativo');
+      submenus.forEach(item => {
+        item.classList.remove('aberto');
+        const submenu = document.getElementById('submenu-' + item.getAttribute('data-submenu'));
+        submenu.classList.remove('aberto');
+      });
+    }
+  });
+</script>
+
+<section class="container">
+  <div id="imovel-detalhe" class="imovel-box"></div>
+</section>
+
+<!-- SIMILARES -->
+<section id="similares" class="container" style="margin-top: 60px;">
+  <div class="bloco-titulo-similares">
+    <h2 class="titulo-similares">
+      <span class="emoji">✨</span>
+      Selecionamos imóveis <br />
+      <strong>que combinam com o seu estilo</strong>
+    </h2>
+  </div>
+
+  <div class="imoveis-carrossel" id="similaresLista"></div>
+</section>
+
+
+<footer>
+  <p>Portaldeinvestimento © 2025 - Todos os direitos reservados.</p>
+  <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get('id');
+  const imovel = JSON.parse(localStorage.getItem('imovelSelecionado'));
+
+ if (imovel && imovel.id === id) {
+  const container = document.getElementById('imovel-detalhe');
+  const numeroWhats = imovel.whatsapp || '5551993303583'; // fallback padrão
+  const mensagemWhats = encodeURIComponent(imovel.mensagem_whats || `Olá! Vi o imóvel '${imovel.titulo}' no Portal de Investimento e gostaria de saber mais.`);
+  const linkWhats = `https://wa.me/${numeroWhats}?text=${mensagemWhats}`;
+
+  container.innerHTML = `
+  <div class="card-destaque">
+
+    <h1 class="titulo-imovel" style="margin-top: 0;">${imovel.titulo}</h1>
+
+    <div class="carousel-container">
+      <div class="carousel">
+        ${(imovel.imagens || [imovel.imagem])
+          .map(src => `<div><img src="${src}" alt="${imovel.titulo}" /></div>`)
+          .join('')}
+      </div>
+    </div>
+
+    <div class="icones-imovel-grid" style="margin-top: 24px;">
+      <div class="info-item">
+        <div class="info-icon">📏</div>
+        <div>
+          <strong>${imovel.metragem || '---'} m²</strong><br/>
+          <span>${imovel.metragem_complemento || ''}</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">🛏</div>
+        <div>
+          <strong>${imovel.quartos || '---'} quartos</strong><br/>
+          <span>${imovel.quartos_complemento || ''}</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">🚿</div>
+        <div>
+          <strong>${imovel.banheiros || '---'} banheiros</strong><br/>
+          <span>${imovel.banheiros_complemento || ''}</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">🚗</div>
+        <div>
+          <strong>${imovel.vagas > 0 ? imovel.vagas : '---'} vaga</strong><br/>
+          <span>${imovel.vagas_complemento || ''}</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">🔆</div>
+        <div>
+          <strong>${imovel.sol || '---'}</strong><br/>
+          <span>${imovel.sol_complemento || ''}</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">💰</div>
+        <div>
+          <strong>R$ ${Number(imovel.preco).toLocaleString('pt-BR')}</strong><br/>
+          <span>${imovel.preco_complemento || ''}</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px; text-align: center;">
+      <a href="${linkWhats}" class="faixa-botao" style="padding: 12px 24px; background-color: #f7941d; color: white; border-radius: 8px; display: inline-block; font-weight: bold;" target="_blank">
+        Quero Mais Detalhes
+      </a>
+    </div>
+  </div>
+
+  <div class="caixa-contato destaque-especialista">
+  <img src="images/logo.png" alt="Especialistas do Portal" class="img-especialistas">
+  <h3>Fale com nossos especialistas</h3>
+  <p>Conte com uma equipe pronta para te </br> orientar no melhor negócio.</p>
+  <a href="${linkWhats}" class="botao-contato destaque-botao" target="_blank">
+    Quero atendimento personalizado
+  </a>
+</div>
+
+`;
+
+
+    $('.carousel').slick({
+      dots: true,
+      arrows: true,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      infinite: true
+    });
+  } else {
+    document.getElementById('imovel-detalhe').innerHTML = `
+      <p style="color:red; font-weight:bold;">Imóvel não encontrado. Volte e tente novamente.</p>
+    `;
+  }
+
+  
+
+  // Imóveis semelhantes
+  fetch('imóveis/oportunidades/oportunidades.json')
+    .then(res => res.json())
+    .then(imoveis => {
+      const similares = imoveis.filter(outro =>
+        outro.regiao === imovel.regiao && outro.id !== imovel.id
+      );
+
+      const container = document.getElementById('similaresLista');
+      similares.forEach(sim => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <a href="imovel.html?id=${sim.id}" onclick='salvarImovel(event, ${JSON.stringify(sim)})'>
+            <img src="${sim.imagem}" alt="${sim.titulo}" />
+          </a>
+          <div class="card-body">
+            <h3 class="card-titulo">${sim.titulo}</h3>
+            <div class="icones-imovel">
+              <div><span>📏</span> ${sim.metragem}m²</div>
+              <div><span>🛏</span> ${sim.quartos} dorm.</div>
+              <div><span>🚿</span> ${sim.banheiros} banh.</div>
+              <div><span>🚗</span> ${sim.vagas} vaga</div>
+            </div>
+            <p class="preco">💰 R$ ${Number(sim.preco).toLocaleString('pt-BR')}</p>
+            <a href="imovel.html?id=${sim.id}" onclick='salvarImovel(event, ${JSON.stringify(sim)})' class="botao-card">Ver detalhes</a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      $('.imoveis-carrossel').slick({
+        dots: false,
+        arrows: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: [
+          { breakpoint: 768, settings: { slidesToShow: 1.1 } },
+          { breakpoint: 1024, settings: { slidesToShow: 2 } },
+          { breakpoint: 1200, settings: { slidesToShow: 3 } }
+        ]
+      });
+    });
+
+    
+
+  function salvarImovel(event, imovel) {
+    event.preventDefault();
+    localStorage.setItem('imovelSelecionado', JSON.stringify(imovel));
+    window.location.href = `imovel.html?id=${imovel.id}`;
+  }
+  
+</script>
+</body>
+</html>

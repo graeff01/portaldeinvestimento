@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Imóveis selecionados nas regiões de Canoas, Porto Alegre e Flori.">
+  <title>Portal de Investimento</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/lancamentos-index.css" />
+
+
+  
+  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11359273530"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-11359273530');
+</script>
+
+</head>
+<body>
+  
+<!-- ==================== BARRA FIXA E MENU LATERAL ==================== -->
+<nav class="barra-topo" id="barraTopo">
+  <div class="barra-conteudo">
+    <div class="logo-container">
+      <div class="logo-titulo">Portal de Investimento</div>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<nav class="menu-lateral" id="menuLateral">
+  <a href="index.html" class="menu-item">🏠 Início</a>
+
+  <div class="menu-item menu-item-com-submenu" data-submenu="agencias">
+    🏢 Nossas Agências
+  </div>
+  <div class="submenu" id="submenu-agencias">
+    <a href="canoas.html" class="submenu-item">Canoas</a>
+    <a href="moinhos.html" class="submenu-item">Porto Alegre</a>
+    <a href="portobelo.html" class="submenu-item">Porto Belo</a>
+    <a href="santamonica.html" class="submenu-item">Santa Mônica</a>
+  </div>
+
+  <a href="investimento.html" class="menu-item">💰 Investimento</a>
+  <a href="/pages/leiloes" class="menu-item">🏗️ Leilão</a>
+
+  <div class="menu-contato">
+    <h3>Atendimento Exclusivo</h3>
+    <a href="https://wa.me/5551993303583?text=Olá,%20vim%20pelo%20Portal%20de%20Investimento!" 
+       class="btn-contato" target="_blank">Falar Agora</a>
+  </div>
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const menuLateral = document.getElementById('menuLateral');
+  const submenus = document.querySelectorAll('.menu-item-com-submenu');
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('ativo');
+    menuLateral.classList.toggle('ativo');
+  });
+
+  submenus.forEach(item => {
+    item.addEventListener('click', () => {
+      const submenuId = item.getAttribute('data-submenu');
+      const submenu = document.getElementById('submenu-' + submenuId);
+      submenu.classList.toggle('aberto');
+      item.classList.toggle('aberto');
+    });
+  });
+
+  // Fecha o menu ao clicar fora
+  document.addEventListener('click', e => {
+    if (!menuLateral.contains(e.target) && !menuToggle.contains(e.target)) {
+      menuLateral.classList.remove('ativo');
+      menuToggle.classList.remove('ativo');
+      submenus.forEach(item => {
+        item.classList.remove('aberto');
+        const submenu = document.getElementById('submenu-' + item.getAttribute('data-submenu'));
+        submenu.classList.remove('aberto');
+      });
+    }
+  });
+</script>
+
+  <!-- HERO -->
+  <header class="hero"></header>
+
+<section class="video-section">
+  <div class="video-frame">
+    <video id="portalVideo" autoplay muted loop playsinline>
+      <source src="images/ig_video_1761666901.mp4" type="video/mp4">
+      Seu navegador não suporta vídeos em HTML5.
+    </video>
+    <button class="sound-toggle pulse" id="soundToggle" aria-label="Ativar som">
+      🔈
+    </button>
+  </div>
+</section>
+
+
+  <!-- AGÊNCIAS -->
+  <section class="container">
+    <h2 class="section-title reveal">Nossas Unidades</h2>
+    <p class="section-description reveal">Clique sobre a unidade desejada e descubra as opções de imóveis disponíveis nessa região.</p>
+    <div class="regions-circles">
+      <a href="canoas.html" class="region-circle reveal-left">
+        <div class="circle-img" style="background-image: url('images/jardim do lago.jpg');"></div>
+        <h3>Canoas</h3>
+      </a>
+      <a href="moinhos.html" class="region-circle reveal-left">
+        <div class="circle-img" style="background-image: url('images/moinhos.jpg');"></div>
+        <h3>Porto Alegre</h3>
+      </a>
+      <a href="santamonica.html" class="region-circle reveal-left">
+        <div class="circle-img" style="background-image: url('images/sc.jpg');"></div>
+        <h3>Florianópolis</h3>
+      </a>
+      <a href="portobelo.html" class="region-circle reveal-left">
+        <div class="circle-img" style="background-image: url('images/ANIVERSARIO-CIDADE-7.jpg');"></div>
+        <h3>Porto Belo</h3>
+      </a>
+    </div>
+    <div class="cta-botao-centro">
+      <a href="https://wa.me/5551993303583?text=Olá%2C+vim+pelo+Portal+de+Investimento+e+gostaria+de+um+atendimento+personalizado!" class="cta-destaque reveal">Fale Com um Especialista!</a>
+    </div>
+  </section>
+
+  <!-- IMÓVEIS -->
+  <section class="container reveal-right" id="imoveis">
+    <div class="section-separator"></div>
+    <h2 class="section-title reveal">Oportunidades</h2>
+    <p class="section-description reveal">Selecionamos as melhores oportunidades </br> do mercado imobiliário especialmente para você.</p>
+    <div class="imoveis-carrossel" id="listaImoveis"></div>
+  </section>
+
+  <!-- LANÇAMENTOS -->
+  <section class="container">
+    <h2 class="section-title1 reveal">Lançamentos</h2>
+    
+    <p class="section-description reveal">Clique sobre o empreendimento </br> e descubra mais sobre o lançamento.</p>
+    <div class="regions-circles">
+      <a href="vista-verde.html" class="region-circle reveal-left">
+        <div class="circle-img" style="background-image: url('images/image.png');"></div>
+        <h3>Canoas</h3>
+      </a>
+    </div>
+  </section>
+
+<!-- ====== RECONHECIMENTOS — RIBBON INFINITO ====== -->
+<section class="container reveal" id="premios">
+  <div class="section-separator"></div>
+  <h2 class="section-title">Reconhecimentos</h2>
+  <p class="section-description-premios">
+    Premiações e selos que comprovam nossa </br> excelência no mercado imobiliário.
+  </p>
+
+  <div class="awards-ribbon" aria-label="Prêmios e reconhecimentos">
+    <div class="ribbon-track">
+      <!-- DUPLIQUE/REMOVA <a class="award-pill"> à vontade -->
+      <a class="award-pill" href="#" data-title="Agência Destaque - locação">
+        <img src="images/t1.jpg" alt="(imóveis Locados) 2022">
+      </a>
+      <a class="award-pill" href="#" data-title="Maior Número de Vendas" - >
+        <img src="images/t2.jpg" alt="DESTAQUE PUC - 2024">
+      </a>
+      <a class="award-pill" href="#" data-title="Agência Ouro - trimestre 4">
+        <img src="images/t3.jpg" alt="Trimestre 2024">
+      </a>
+      <a class="award-pill" href="#" data-title="Oscar - Corretor Revelação">
+        <img src="images/t4.jpg" alt="Prime Club 2024">
+      </a>
+      <a class="award-pill" href="#" data-title="Agência Ouro - trimestre 1">
+        <img src="images/t5.jpg" alt="Trimestre 2024">
+      </a>
+      <a class="award-pill" href="#" data-title="Agência Ouro - trimestre 2">
+        <img src="images/t6.jpg" alt="Inovação 2025">
+      </a>
+
+      <!-- ===== Duplicado para loop perfeito ===== -->
+      <a class="award-pill" href="#" data-title="Destque Loca Tudo - 2023">
+        <img src="images/t7.jpg" alt="Destque 2023">
+      </a>
+      <a class="award-pill" href="#" data-title="Agência Destaque - locação">
+        <img src="images/t8.jpg" alt="Top Vendas 2023">
+      </a>
+      <a class="award-pill" href="#" data-title="Destque Loca Tudo - 2023">
+        <img src="images/t9.jpg" alt="Excelência 2022">
+      </a>
+    </div>
+    <div class="edge-fade left"></div>
+    <div class="edge-fade right"></div>
+  </div>
+
+  <div class="awards-actions">
+    <a href="#certificados" class="btn-outline">Ver certificados</a>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="award-modal" id="awardModal" hidden aria-hidden="true">
+  <div class="award-modal__backdrop"></div>
+  <figure class="award-modal__content" role="dialog" aria-modal="true">
+    <button class="award-modal__close" aria-label="Fechar">✕</button>
+    <div class="award-modal__media">
+      <img id="awardModalImg" alt="">
+    </div>
+    <figcaption id="awardModalCap"></figcaption>
+  </figure>
+</div>
+
+
+
+<!-- FORMULÁRIO MODERNO -->
+<section class="container form-section">
+  <h2 class="section-title reveal">Fale com nossa equipe</h2>
+  <p class="section-description reveal">
+    Nos conte seu objetivo e retornaremos com as melhores opções para você investir com segurança.
+  </p>
+
+  <form name="formularioLead" class="form-grid">
+    <div class="form-row">
+      <input type="text" name="nome" placeholder="Nome completo" class="input-campo" required>
+      <input type="tel" name="telefone" placeholder="Telefone com DDD" class="input-campo" required>
+    </div>
+    <div class="form-row">
+      <input type="email" name="email" placeholder="Seu melhor e-mail" class="input-campo" required>
+    </div>
+    <div class="form-row">
+      <textarea name="mensagem" placeholder="Como podemos te ajudar?" class="input-campo" required></textarea>
+    </div>
+    <div class="form-footer">
+      <button type="submit" class="botao-submit">Quero mais informações</button>
+    </div>
+  </form>
+
+  <p id="mensagemForm" class="msg-sucesso"></p>
+</section>
+
+
+
+
+  <p id="mensagemForm" class="msg-sucesso"></p>
+</section>
+
+
+  <!-- RODAPÉ -->
+  <footer>
+    <p>Portaldeinvestimento © 2025 - Todos os direitos reservados.</p>
+    <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+    ScrollReveal().reveal('.reveal-left', {
+      origin: 'left', distance: '50px', duration: 800, delay: 100, easing: 'ease-out',
+    });
+    ScrollReveal().reveal('.reveal-right', {
+      origin: 'right', distance: '50px', duration: 800, delay: 100, easing: 'ease-out',
+    });
+    ScrollReveal().reveal('.reveal', {
+      distance: '40px', duration: 800, easing: 'ease-out', origin: 'bottom', interval: 100
+    });
+  </script>
+  <script>
+    fetch('imoveis/oportunidades/oportunidades.json')
+      .then(res => res.json())
+      .then(imoveis => {
+        const lista = document.getElementById('listaImoveis');
+        imoveis.forEach(imovel => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <a href="imovel.html?id=${imovel.id}" onclick='salvarImovel(event, ${JSON.stringify(imovel)})'>
+              <img src="${imovel.imagem}" alt="${imovel.titulo}" />
+            </a>
+            <div class="card-body">
+              <h3 class="card-titulo">${imovel.titulo}</h3>
+              <div class="icones-imovel">
+                <div><span>📏</span> ${imovel.metragem}m²</div>
+                <div><span>🛎</span> ${imovel.quartos} dorm.</div>
+                <div><span>🚿</span> ${imovel.banheiros} banh.</div>
+                <div><span>🚗</span> ${imovel.vagas} vaga</div>
+              </div>
+              <p class="preco">R$ ${Number(imovel.preco).toLocaleString('pt-BR')}</p>
+              <a href="imovel.html?id=${imovel.id}" onclick='salvarImovel(event, ${JSON.stringify(imovel)})' class="botao-card">Ver detalhes</a>
+            </div>`;
+          lista.appendChild(card);
+        });
+      });
+
+    function salvarImovel(event, imovel) {
+      event.stopPropagation();
+      localStorage.setItem('imovelSelecionado', JSON.stringify(imovel));
+    }
+  </script>
+
+<script>
+  const carousel = document.querySelector('.carousel-premios');
+  let items = Array.from(carousel.children);
+
+  function rotateCarousel() {
+    items.unshift(items.pop()); // move o último para o início
+    items.forEach((item, index) => {
+      item.className = 'carousel-item'; // reset
+    });
+
+    items[0].classList.add('left');
+    items[1].classList.add('center');
+    items[2].classList.add('right');
+
+    // reordenar no DOM
+    carousel.innerHTML = '';
+    items.forEach(item => carousel.appendChild(item));
+  }
+
+  setInterval(rotateCarousel, 4000);
+</script>
+
+<!-- POPUP DE MATCH + BOTÃO DE FECHAR -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <button class="popup-close" id="closePopup">×</button>
+    <div class="popup-header">
+      <h2><strong>Tecnologia Imobiliária</strong><br><span>Inspirada no Tinder</span></h2>
+    </div>
+    <p>Deslize para os lados e encontre imóveis incríveis com apenas um match.</p>
+    <a href="match.html" class="popup-btn">Quero Testar Agora</a>
+  </div>
+</div>
+
+
+<style>
+  .popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .popup-box {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff, #f2f2f2);
+    padding: 32px 24px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    animation: popIn 0.4s ease-out;
+  }
+
+  .popup-box h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 12px;
+  }
+
+  .popup-box p {
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 20px;
+  }
+
+  .popup-btn {
+    display: inline-block;
+    background-color: #00c851;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: none;
+    box-shadow: 0 6px 12px rgba(0, 200, 80, 0.4);
+    transition: background 0.3s ease;
+  }
+
+  .popup-btn:hover {
+    background-color: #00a843;
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    font-weight: bold;
+  }
+
+  .popup-close:hover {
+    color: #000;
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    from { background: rgba(0, 0, 0, 0); }
+    to   { background: rgba(0, 0, 0, 0.7); }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('popup');
+    const closeBtn = document.getElementById('closePopup');
+    const ctaBtn = document.querySelector('.popup-btn');
+
+    closeBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    ctaBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    // Fechar automático após 12s (opcional)
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 12000);
+  });
+</script>
+
+<script>
+  const video = document.getElementById('portalVideo');
+  const soundBtn = document.getElementById('soundToggle');
+  let soundOn = false;
+
+  soundBtn.addEventListener('click', () => {
+    soundOn = !soundOn;
+    video.muted = !soundOn;
+    soundBtn.textContent = soundOn ? '🔊' : '🔈';
+    
+    // Remove o efeito de pulso após ativar o som
+    if (soundOn) {
+      soundBtn.classList.remove('pulse');
+    }
+  });
+</script>
+
+
+<script>
+(function(){
+  const modal = document.getElementById('awardModal');
+  const modalImg = document.getElementById('awardModalImg');
+  const modalCap = document.getElementById('awardModalCap');
+
+  document.querySelectorAll('.award-pill').forEach(p => {
+    p.addEventListener('click', e => {
+      e.preventDefault();
+      const img = p.querySelector('img');
+      modalImg.src = img.src;
+      modalImg.alt = img.alt || '';
+      modalCap.textContent = p.getAttribute('data-title') || '';
+      modal.hidden = false;
+      document.body.classList.add('modal-open');
+    });
+  });
+
+  function closeModal(){
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+    modalImg.src = '';
+  }
+
+  modal.querySelector('.award-modal__close').addEventListener('click', closeModal);
+  modal.querySelector('.award-modal__backdrop')?.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && !modal.hidden) closeModal();
+  });
+})();
+</script>
+
+
+
+</body>
+</html>

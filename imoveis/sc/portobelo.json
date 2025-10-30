@@ -1,0 +1,74 @@
+[
+  {
+    "id": "715556",
+    "titulo": "Apartamento à venda de 2 quartos no Perequê - Porto Belo!",
+    "quartos": 2,
+    "quartos_complemento": "com suíte",
+    "banheiros": 2,
+    "banheiros_complemento": "com box de vidro",
+    "vagas": 2,
+    "vagas_complemento": "cobertas",
+    "metragem": 73,
+    "metragem_complemento": "Área útil",
+    "sol": "Sol da manhã",
+    "sol_complemento": "na sala e varanda",
+    "preco_complemento": "à vista",
+    "imagem": "images/sc/715556/1.jpg",
+    "imagens": [
+      "images/sc/715556/2.jpg",
+      "images/sc/715556/3.jpg",
+      "images/sc/715556/4.jpg",
+      "images/sc/715556/5.jpg"
+    ],
+    "descricao": "Descubra o seu novo lar no encantador Balneário Perequê, em Porto Belo. Este apartamento de 73 m² na Torre Atlântico apresenta um hall de entrada mobiliado, sacada e janelas grandes que garantem ótima iluminação. O imóvel ainda possui área de serviço e churrasqueira na sacada, perfeito para momentos de descontração. Desfrute da infraestrutura completa do condomínio, que inclui piscina e salão de festas. Além disso, o apartamento oferece duas vagas na garagem e está idealmente localizado perto das belezas naturais da região. Venha conhecer e se encantar!",
+    "link": "imovel.html?id=715556",
+    "mensagem_whats": "Oi! Vi esse imóvel no Portal de Investimento e achei interessante. Pode me passar mais detalhes? Código: [715556]",
+    "regiao": "santa catarina",
+    "tipo": "Apartamento",
+    "preco": 985000,
+    "whatsapp": "5548988189757"
+  },
+  {
+    "id": "713131",
+    "titulo": "Apartamento com sacada de 2 quartos no Perequê - Porto Belo!",
+    "quartos": 2,
+    "banheiros": 2,
+    "vagas": 1,
+    "metragem": 76,
+    "imagem": "images/sc/713131/1.jpg",
+    "imagens": [
+      "images/sc/713131/2.jpg",
+      "images/sc/713131/3.jpg",
+      "images/sc/713131/4.jpg",
+      "images/sc/713131/5.jpg"
+    ],
+    "descricao": "Apartamento de 2 quartos no Perequê - Porto Belo! Se você busca viver próximo da Praia, ou até mesmo investir, o Acqualina Residence pode ser ideal para você! Este belíssimo apartamento conta com 2 suítes espaçosas para você e sua família desfrutar de privacidade e comodidade. Além disso com 75m² de área privativa, com um lavabo e 1 vaga de garagem garantindo segurança para seu veículo.",
+    "link": "imovel.html?id=713131",
+    "mensagem_whats": "Oi! Vi esse imóvel no Portal de Investimento e achei interessante. Pode me passar mais detalhes? Código: [713131]",
+    "regiao": "santa catarina",
+    "tipo": "Apartamento",
+    "preco": 815000,
+    "whatsapp": "5548988189757"
+  },
+  {
+    "id": "713116",
+    "titulo": "Conforto e Lazer em um Belo Apartamento de 100M²",
+    "quartos": 3,
+    "banheiros": 3,
+    "vagas": 2,
+    "metragem": 100,
+    "imagem": "images/sc/713116/1.jpg",
+    "imagens": [
+      "images/sc/713116/2.jpg",
+      "images/sc/713116/3.jpg",
+      "images/sc/713116/4.jpg"
+    ],
+    "descricao": "O Ilha de Porto Belo Residence é um empreendimento de alto padrão, ideal para quem busca conforto, lazer e uma vista panorâmica incrível. Com 100m² de área privativa, o apartamento oferece um acabamento impecável, com móveis planejados e amplos espaços integrados. A localização privilegiada em Porto Belo proporciona fácil acesso às praias e uma vida tranquila, com diversas opções de lazer e comodidade para toda a família.",
+    "link": "imovel.html?id=713116",
+    "mensagem_whats": "Oi! Vi esse imóvel no Portal de Investimento e achei interessante. Pode me passar mais detalhes? Código: [713116]",
+    "regiao": "santa catarina",
+    "tipo": "Apartamento",
+    "preco": 1690000,
+    "whatsapp": "5548988189757"
+  }
+]

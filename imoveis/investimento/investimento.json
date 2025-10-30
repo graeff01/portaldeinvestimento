@@ -1,0 +1,38 @@
+[
+  {
+    "id": "INV-001",
+    "titulo": "2D reformado – próximo ao trem",
+    "cidade": "Canoas",
+    "bairro": "Centro",
+    "tipo": "Apartamento",
+    "area": 54,
+    "vagas": 1,
+    "preco": 289000,
+    "aluguel_est": 2000,
+    "condominio": 350,
+    "iptu_mensal": 35,
+    "perfil": ["Preço baixo", "Comprar para alugar"],
+    "url": "/imovel.html?id=INV-001",
+    "imagem": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop",
+    "desconto_percentual": 12,
+    "whatsapp": "5551999999999"
+  },
+  {
+    "id": "INV-002",
+    "titulo": "Loft mobiliado perto da UFRGS",
+    "cidade": "Porto Alegre",
+    "bairro": "Cidade Baixa",
+    "tipo": "Kitnet/Loft",
+    "area": 38,
+    "vagas": 1,
+    "preco": 368800,
+    "aluguel_est": 2300,
+    "condominio": 450,
+    "iptu_mensal": 42,
+    "perfil": ["Comprar para alugar", "Alto rendimento"],
+    "url": "/imovel.html?id=INV-002",
+    "imagem": "https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1200&auto=format&fit=crop",
+    "desconto_percentual": 8,
+    "whatsapp": "5551994061787"
+  }
+]

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Match Imobiliário</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/match.css" />
+</head>
+
+<body>
+  <div class="background-pattern"></div>
+
+  <div class="container">
+    <div class="card" id="card">
+      <div class="progress-bar" id="progress"></div>
+
+      <div class="carousel" id="carousel">
+        <div class="carousel-track" id="carouselTrack"></div>
+      </div>
+
+      <div class="info">
+        <h2 id="titulo"></h2>
+        <p class="local" id="metragem"></p>
+        <div class="tags" id="tags"></div>
+      </div>
+
+      <div class="buttons">
+        <button class="action dislike" id="dislikeBtn">
+          <img src="https://cdn-icons-png.flaticon.com/512/753/753345.png" alt="X">
+        </button>
+
+        <div class="center-buttons">
+          <button class="action localizacao" id="btnLocalizacao">
+            <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Localização">
+          </button>
+
+          <button class="action compartilhar" id="shareBtn">
+            <img src="https://cdn-icons-png.flaticon.com/512/786/786205.png" alt="Compartilhar">
+          </button>
+        </div>
+
+        <button class="action like" id="likeBtn">
+          <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Like">
+        </button>
+      </div>
+
+      <div class="menu-localizacao" id="menuLocalizacao">
+        <div class="menu-localizacao-header">Filtrar por localização</div>
+        <ul>
+          <li data-local="todos">Todas</li>
+          <li data-local="Canoas">Canoas</li>
+          <li data-local="Porto Alegre">Porto Alegre</li>
+          <li data-local="Santa Catarina">Santa Catarina</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fim-container" id="fimContainer" style="display: none;">
+      <h2>Você chegou ao fim dos imóveis!</h2>
+      <p>Explore mais opções no menu principal e encontre o imóvel perfeito.</p>
+      <a href="index.html" class="btn-voltar">Voltar para o início</a>
+    </div>
+
+    <a href="index.html" class="botao-voltar-inicio" id="botaoVoltarInicio">← Voltar</a>
+  </div>
+
+  <script>
+    const card = document.getElementById('card');
+    const likeBtn = document.getElementById('likeBtn');
+    const dislikeBtn = document.getElementById('dislikeBtn');
+    const carouselTrack = document.getElementById('carouselTrack');
+    const progress = document.getElementById('progress');
+    const titulo = document.getElementById('titulo');
+    const metragem = document.getElementById('metragem');
+    const tagsContainer = document.getElementById('tags');
+    const fimContainer = document.getElementById('fimContainer');
+    const btnLocalizacao = document.getElementById('btnLocalizacao');
+    const menuLocalizacao = document.getElementById('menuLocalizacao');
+
+    let index = 0;
+    let imoveis = [];
+    let imoveisFiltrados = [];
+    let currentImg = 0;
+    let startX;
+
+    async function carregarImoveis() {
+      const response = await fetch('imóveis/match/match.json');
+      imoveis = await response.json();
+      imoveisFiltrados = [...imoveis];
+      carregarImovelCard(imoveisFiltrados[index]);
+    }
+
+    function carregarImovelCard(imovel) {
+      if (!imovel) {
+        fimContainer.style.display = 'flex';
+        card.style.display = 'none';
+        return;
+      }
+
+      carouselTrack.innerHTML = '';
+      progress.innerHTML = '';
+      tagsContainer.innerHTML = '';
+
+      imovel.imagens.forEach((img, i) => {
+        const image = document.createElement('img');
+        image.src = img;
+        image.loading = "lazy";
+        carouselTrack.appendChild(image);
+
+        const dot = document.createElement('span');
+        if (i === 0) dot.classList.add('active');
+        progress.appendChild(dot);
+      });
+
+      titulo.textContent = imovel.titulo;
+      metragem.textContent = `${imovel.agência} — ${imovel.regiao}`;
+
+      const tags = [
+        `${imovel.quartos} quartos`,
+        `${imovel.banheiros} banheiros`,
+        `${imovel.vagas} vagas`,
+        `${imovel.metragem} m²`,
+        `${imovel.tipo}`,
+        `R$ ${imovel.preco}`
+      ];
+
+      tags.forEach(tagText => {
+        const tag = document.createElement('span');
+        tag.className = 'tag';
+        tag.textContent = tagText;
+        tagsContainer.appendChild(tag);
+      });
+
+      currentImg = 0;
+      atualizarCarrossel();
+    }
+
+    function atualizarCarrossel() {
+      const largura = card.offsetWidth;
+      carouselTrack.style.transform = `translateX(-${currentImg * largura}px)`;
+      Array.from(progress.children).forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentImg);
+      });
+    }
+
+    function trocarCardAnimado(direcao) {
+      const imovel = imoveisFiltrados[index];
+      if (direcao === 'like') {
+        const url = `https://wa.me/${imovel.whatsapp}?text=${encodeURIComponent(imovel.mensagem_whats)}`;
+        window.open(url, '_blank');
+      }
+
+      card.classList.add(direcao === 'like' ? 'swipe-right' : 'swipe-left');
+      setTimeout(() => {
+        card.classList.remove('swipe-right', 'swipe-left');
+        index++;
+        if (index < imoveisFiltrados.length) carregarImovelCard(imoveisFiltrados[index]);
+        else {
+          card.style.display = 'none';
+          fimContainer.style.display = 'flex';
+        }
+      }, 400);
+    }
+
+    likeBtn.addEventListener('click', () => trocarCardAnimado('like'));
+    dislikeBtn.addEventListener('click', () => trocarCardAnimado('dislike'));
+
+    document.getElementById('carousel').addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+    document.getElementById('carousel').addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+      if (diff > 50 && currentImg < carouselTrack.children.length - 1) currentImg++;
+      else if (diff < -50 && currentImg > 0) currentImg--;
+      atualizarCarrossel();
+    });
+
+    btnLocalizacao.addEventListener('click', () => menuLocalizacao.classList.toggle('ativo'));
+
+    menuLocalizacao.querySelectorAll('li').forEach(item => {
+      item.addEventListener('click', () => {
+        const filtro = item.getAttribute('data-local');
+        index = 0;
+        imoveisFiltrados = filtro === 'todos' ? [...imoveis] :
+          imoveis.filter(i => i.regiao.toLowerCase().includes(filtro.toLowerCase()));
+        carregarImovelCard(imoveisFiltrados[index]);
+        menuLocalizacao.classList.remove('ativo');
+      });
+    });
+
+    const shareBtn = document.getElementById('shareBtn');
+    shareBtn.addEventListener('click', () => {
+      const imovel = imoveisFiltrados[index];
+      const texto = `Encontrei esse imóvel incrível!\n\n${imovel.titulo}\n${imovel.regiao} - ${imovel.agência}\n${imovel.metragem}m² | ${imovel.quartos} quartos | R$ ${imovel.preco}\n\nVeja mais em: ${window.location.href}`;
+      if (navigator.share) navigator.share({ title: imovel.titulo, text: texto, url: window.location.href });
+      else navigator.clipboard.writeText(texto).then(() => alert("Link copiado!"));
+    });
+
+    carregarImoveis();
+  </script>
+</body>
+</html>

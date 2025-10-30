@@ -1,0 +1,42 @@
+[
+  {
+    "id": "op001",
+    "titulo": "Apartamento Garden com Terraço - Santa Mônica",
+    "quartos": 1,
+    "banheiros": 1,
+    "vagas": 1,
+    "metragem": 86,
+    "imagem": "imoveis/images/imoveis/casa1.jpeg",
+    "imagens": [
+      "imoveis/images/imoveis/sc.jpeg",
+      "imoveis/images/imoveis/sc.jpegs"
+    ],
+    "descricao": "Amplo imóvel com terraço privativo, em localização privilegiada no bairro Santa Mônica. Ideal para moradia ou investimento.",
+    "link": "imovel.html?id=op001",
+    "mensagem_whats": "Oi! Vi esse imóvel no Portal de Investimento e achei interessante. Pode me passar mais detalhes? Código: [código do imóvel]",
+    "regiao": "santa catarina",
+    "tipo": "Apartamento",
+    "preco": 549000,
+    "whatsapp": "5551993303583"
+  },
+  {
+    "id": "op002",
+    "titulo": "Apartamento Garden com Terraço - Canoas",
+    "quartos": 1,
+    "banheiros": 1,
+    "vagas": 1,
+    "metragem": 86,
+    "imagem": "imoveis/images/imoveis/casa1.jpeg",
+    "imagens": [
+      "imoveis/images/imoveis/casa1.jpeg",
+      "imoveis/images/imoveis/casa2.jpeg"
+    ],
+    "descricao": "Amplo imóvel com terraço privativo, em localização privilegiada no bairro Santa Mônica. Ideal para moradia ou investimento.",
+    "link": "imovel.html?id=op001",
+    "mensagem_whats": "Oi! Vi esse imóvel no Portal de Investimento e achei interessante. Pode me passar mais detalhes? Código: [código do imóvel]",
+    "regiao": "santa catarina",
+    "tipo": "Apartamento",
+    "preco": 549000,
+    "whatsapp": "5551994003224"
+  }
+]

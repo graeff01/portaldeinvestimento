@@ -1,0 +1,70 @@
+[
+  {
+    "id": "m1",
+    "titulo": "Apartamento moderno com vista para o parque",
+    "quartos": 2,
+    "banheiros": 1,
+    "vagas": 2,
+    "metragem": 36,
+    "regiao": "Porto Alegre",
+    "agência": "moinhos de vento",
+    "local": "poa",
+    "tipo": "Apartamento",
+    "preco": 245000,
+    "imagem": "images/poa/722585/1.jpg",
+    "imagens": [
+      "images/poa/722585/2.jpg",
+      "images/poa/722585/3.jpg",
+      "images/poa/722585/4.jpg",
+      "images/poa/722585/5.jpg"
+    ],
+    "descricao": "Excelente apartamento 1 dormitório, ideal para estudantes e pronto para morar!",
+    "mensagem_whats": "Oi! Vi esse imóvel no Portal de Investimento e achei interessante. Pode me passar mais detalhes? Código: [722585]",
+    "whatsapp": "555135731139"
+  },
+  {
+    "id": "m2",
+    "titulo": "Apartamento Garden com Terraço - Canoas",
+    "quartos": 1,
+    "banheiros": 1,
+    "vagas": 1,
+    "metragem": 86,
+    "regiao": "canoas",
+    "agência": "jardim do lago",
+    "local": "canoas",
+    "tipo": "Apartamento",
+    "preco": 549000,
+    "imagem": "imóveis/images/imoveis/casa1.jpeg",
+    "imagens": [
+      "imóveis/images/imoveis/casa1.jpeg",
+      "imóveis/images/imoveis/casa2.jpeg"
+    ],
+    "descricao": "Amplo imóvel com terraço privativo, em localização privilegiada no bairro Santa Mônica. Ideal para moradia ou investimento.",
+    "mensagem_whats": "Oi! Vi esse imóvel no Portal de Investimento e achei interessante. Pode me passar mais detalhes? Código: [código do imóvel]",
+    "whatsapp": "5551994003224"
+  }
+  ,
+  {"id": "715556",
+    "titulo": "Apartamento à venda de 2 quartos no Perequê - Porto Belo!",
+    "quartos": 2,
+    "banheiros": 2,
+    "vagas": 2,
+    "metragem": 73,
+    "regiao": "santa catarina",
+    "agência": "santa monica",
+    "local": "sc",
+    "tipo": "Apartamento",
+    "preco": 985000,
+    "imagem": "images/sc/715556/1.jpg",
+    "imagens": [
+      "images/sc/715556/2.jpg",
+      "images/sc/715556/3.jpg",
+      "images/sc/715556/4.jpg",
+      "images/sc/715556/5.jpg"
+    ],
+    "descricao": "Descubra o seu novo lar no encantador Balneário Perequê, em Porto Belo. Este apartamento de 73 m² na Torre Atlântico apresenta um hall de entrada mobiliado, sacada e janelas grandes que garantem ótima iluminação. O imóvel ainda possui área de serviço e churrasqueira na sacada, perfeito para momentos de descontração. Desfrute da infraestrutura completa do condomínio, que inclui piscina e salão de festas. Além disso, o apartamento oferece duas vagas na garagem e está idealmente localizado perto das belezas naturais da região. Venha conhecer e se encantar!",
+    "mensagem_whats": "Oi! Vi esse imóvel no Portal de Investimento e achei interessante. Pode me passar mais detalhes? Código: [715556]",
+    "whatsapp": "5548988189757"
+  }
+
+]
